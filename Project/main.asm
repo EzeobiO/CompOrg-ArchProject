@@ -293,28 +293,28 @@ print_grade:
 	jmp print_studentTable                  ;Jump to print_studentTable unconditionally
 
 print_Result:
-xor eax, eax
-	xor ebx, ebx
-	xor ecx, ecx
-	xor edx, edx
-	xor esi, esi
-	xor edi, edi
-	mov edx, offset endResult
-	call writestring
-	call crlf
+	xor eax, eax                            ;Zero out eax    
+	xor ebx, ebx                            ;Zero out ebx
+	xor ecx, ecx                            ;Zero out ecx
+	xor edx, edx                            ;Zero out edx
+	xor esi, esi                            ;Zero out esi
+	xor edi, edi                            ;Zero out edi
+	mov edx, offset endResult               ;Load offset of data endResult into the edx register
+	call writestring                        ;Print message from edx (endResult)
+	call crlf                               ;New line
 
 print_finalTable:
-	cmp ebx, 10
-	je print_distribution
-	mov al, [names + esi]
-	mov [studentName], al
-	cmp studentName, ','
-	je check_for_index_final
-	mov edx, offset studentName
-	call writestring
-	inc esi
-	inc ecx
-	jmp print_finalTable
+	cmp ebx, 10                             ;Compare value from register ebx to value 10
+	je print_distribution                   ;If equal, jump to print_distribution
+	mov al, [names + esi]                   ;Move data from [names + esi] (calculated memory address) into al
+	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
+	cmp studentName, ','                    ;Compare value in data studentName and ','(used as an index for names Array)
+	je check_for_index_final                ;If equal, jump to check_for_index_final    
+	mov edx, offset studentName             ;Load offset of data studentName into the edx register
+	call writestring                        ;Print message from edx (studentName)
+	inc esi                                 ;Increment value in esi register by 1
+	inc ecx                                 ;Increment value in ecx register by 1
+	jmp print_finalTable                    ;Jump to print_finalTable unconditionally
 
 check_for_index_final:
 	cmp ecx, 0
