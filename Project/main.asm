@@ -175,14 +175,14 @@ first_swap:
 	jmp first_swap                          ;Jump to first_swap unconditionally
 
 finish_first_swap:
-	mov al, [names + ecx]
-	mov [swappedNames + esi], al
-	mov [studentName], al
-	inc ecx
-	inc esi
-	cmp studentName, ','
-	je second_instance
-	jmp finish_first_swap
+	mov al, [names + ecx]                   ;Move memory from [names + ecx] (calculated memory address) into al
+	mov [swappedNames + esi], al            ;Move data from al into [swappedNames + esi] (calculated memory address)
+	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
+	inc ecx                                 ;Increment value in ecx register by 1
+	inc esi                                 ;Increment value in esi register by 1
+	cmp studentName, ','                    ;Compare value in data studentName and ','(used as an index for names Array)
+	je second_instance                      ;If equal, jump to second_instance
+	jmp finish_first_swap                   ;Jump to finish_first_swap unconditionally
 
 second_instance:
 	mov [num3], ecx
@@ -192,10 +192,10 @@ second_instance:
 	jmp iterate
 
 iterate:
-	mov al, [names + ecx]
+	mov al, [names + ecx]                    ;Move memory from [names + ecx] (calculated memory address) into al
 	mov [studentName], al
 	inc ecx
-	cmp studentName, ','
+	cmp studentName, ','                     ;Compare value in data studentName and ','(used as an index for names Array)
 	je next_index
 	jmp iterate
 
@@ -205,7 +205,7 @@ prepare_final:
 	jmp second_swap
 
 second_swap:
-	mov al, [names + ecx]
+	mov al, [names + ecx]                     ;Move memory from [names + ecx] (calculated memory address) into al
 	mov [swappedNames + esi], al
 	mov [studentName], al
 	inc ecx
