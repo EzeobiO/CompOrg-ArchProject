@@ -423,12 +423,12 @@ final_form:
 	je ending                               ;If equal, jump to ending
 	xor eax, eax                            ;Zero out eax
 	mov al, [gradeArray + ecx]              ;Move data from [gradeArray + ecx] (calculated memory address) into al
-	call writedec                           ;
-	inc ecx
-	jmp final_form
+	call writedec                           ;Prints value from al
+	inc ecx                                 ;Increment value in ecx register by 1
+	jmp final_form                          ;Jump to final_form unconditionally
 
 ending:
-	call crlf
+	call crlf                               ;New line
 
     INVOKE ExitProcess, 0
 main ENDP
