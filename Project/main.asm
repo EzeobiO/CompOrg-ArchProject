@@ -402,17 +402,17 @@ print_letter_gradeArray:
 	jmp print_letter_gradeArray             ;Jump to print_letter_gradeArray unconditionally
 
 print_integer_gradeArray:
-	mov [studentName], ' '
-	mov edx, offset studentName
-	call writestring
-	inc esi
-	inc ecx
-	xor eax, eax
-	mov al, [gradeArray + ebx]
-	call writedec
-	call crlf
-	inc ebx
-	jmp print_letter_gradeArray
+	mov [studentName], ' '                  ;Print a space between studentName and grade
+	mov edx, offset studentName             ;Load offset of data studentName into the edx register
+	call writestring                        ;Print message from edx (studentName)
+	inc esi                                 ;Increment value in esi register by 1
+	inc ecx                                 ;Increment value in ecx register by 1
+	xor eax, eax                            ;Zero out eax
+	mov al, [gradeArray + ebx]              ;Move data from [gradeArray + ebx] (calculated memory address) into al
+	call writedec                           ;Prints value from al
+	call crlf                               ;New line
+	inc ebx                                 ;Increment value in ebx register by 1
+	jmp print_letter_gradeArray             ;Jump to print_letter_gradeArray unconditionally
 
 ending_all:
 	xor ecx, ecx
