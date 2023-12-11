@@ -252,12 +252,12 @@ increment_outer_loop_no_sort:
 
 	;Student Table Printout
 prepare_printer:
-	xor edx, edx
-	xor ecx, ecx
-	xor eax, eax
-	xor ebx, ebx
-	xor esi, esi
-	jmp print_studentTable
+	xor edx, edx                            ;Zero out edx
+	xor ecx, ecx                            ;Zero out ecx
+	xor eax, eax                            ;Zero out eax
+	xor ebx, ebx                            ;Zero out ebx
+	xor esi, esi                            ;Zero out esi
+	jmp print_studentTable                  ;Jump to print_studentTable unconditionally
 
 print_studentTable:
 	cmp ebx, 10
