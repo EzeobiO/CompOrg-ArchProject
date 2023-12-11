@@ -415,15 +415,15 @@ print_integer_gradeArray:
 	jmp print_letter_gradeArray             ;Jump to print_letter_gradeArray unconditionally
 
 ending_all:
-	xor ecx, ecx
-	call crlf
+	xor ecx, ecx                            ;Zero out ecx
+	call crlf                               ;New line
 
 final_form:
-	cmp ecx, 5
-	je ending
-	xor eax, eax
-	mov al, [gradeArray + ecx]
-	call writedec
+	cmp ecx, 5                              ;Comapre value from register ecx to value 5
+	je ending                               ;If equal, jump to ending
+	xor eax, eax                            ;Zero out eax
+	mov al, [gradeArray + ecx]              ;Move data from [gradeArray + ecx] (calculated memory address) into al
+	call writedec                           ;
 	inc ecx
 	jmp final_form
 
