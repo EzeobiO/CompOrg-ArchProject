@@ -61,57 +61,57 @@ print_originalTable:
 	inc ecx									;Increment value in ecx register by 1
 	jmp print_originalTable					;Jump to print_originalTable unconditionally
 
-check_for_index_original:
-	cmp ecx, 0
-	jne print_original_grade
-	inc ecx
-	inc esi
-	jmp print_originalTable
+check_for_index_original:                   
+	cmp ecx, 0                              ;Compare value in ebx register to 0
+	jne print_original_grade                ;If not equal, jump to print_original_grade
+	inc ecx                                 ;Increment value in ecx register by 1
+	inc esi                                 ;Increment value in esi register by 1
+	jmp print_originalTable                 ;Jump to print_originalTable unconditionally
 
 print_original_grade:
-	mov [studentName], ' '
-	mov edx, offset studentName
-	call writestring
-	inc esi
-	inc ecx
-	xor eax, eax
-	mov al, [myData + ebx]
-	call writedec
-	call crlf
-	inc ebx
-	jmp print_originalTable
+	mov [studentName], ' '                  ;Store ' ' into data studentName
+	mov edx, offset studentName             ;Load offset of data studentName (studentName is of type Byte) into the edx register
+	call writestring                        ;Print
+	inc esi                                 ;Increment value in esi register by 1
+	inc ecx                                 ;Increment value in ecx register by 1
+	xor eax, eax                            ;Perform exclusive or with eax register 
+	mov al, [myData + ebx]                  ;Load an element from the myData array into al
+	call writedec                           ;Print
+	call crlf                               ;Go to next line
+	inc ebx                                 ;Increment value in ebx register by 1
+	jmp print_originalTable                 ;Jump to print_originalTable unconditionally
 
 selection_sort:
-	xor eax, eax
-	xor ebx, ebx
-	xor ecx, ecx
-	xor edx, edx
-	xor esi, esi
-	xor edi, edi
-	call crlf
-	mov edx, offset theprocess
-	call writestring
-	call crlf
+	xor eax, eax                            ;Perform exclusive or with eax register which zeros out
+	xor ebx, ebx                            ;Perform exclusive or with ebx register which zeros out
+	xor ecx, ecx                            ;Perform exclusive or with ecx register which zeros out
+	xor edx, edx                            ;Perform exclusive or with edx register which zeros out
+	xor esi, esi                            ;Perform exclusive or with esi register which zeros out
+	xor edi, edi                            ;Perform exclusive or with edi register which zeros out
+	call crlf                               ;Go to next line
+	mov edx, offset theprocess              ;Load offset of data theprocess (theprocess is of type Byte) into the edx register
+	call writestring                        ;Print
+	call crlf                               ;Go to next line
 
 	;Selection Sort
 outer_loop:
-	cmp ecx, mylength
-	je print_Result
-	mov esi, ecx
-	mov ebx, esi
-	inc ebx
+	cmp ecx, mylength                       ;Compare value in ecx and mylength (equal to 10)
+	je print_Result                         ;If equal, jump to print_Result
+	mov esi, ecx                            ;Move content from ecx register to esi register
+	mov ebx, esi                            ;Move content from esi register to ebx register
+	inc ebx                                 ;Increment value in ebx register by 1
 
 inner_loop:
-	cmp ebx, mylength
-	je swap_grades
-	mov al, [myData + ebx]
-	mov dl, [myData + esi]
-	cmp al, dl
-	jge increment_inner_loop
-	mov esi, ebx
+	cmp ebx, mylength                       ;Compare value in ebx and mylength
+	je swap_grades                          ;If equal, jump to swap_grades
+	mov al, [myData + ebx]                  ;Load an element from the myData array into ebx
+	mov dl, [myData + esi]                  ;Load an element from the myData array into esi
+	cmp al, dl                              ;Compare value in al to value in dl
+	jge increment_inner_loop                ;If greater than or equal, jump to increment_inner_loop
+	mov esi, ebx                            ;Load data from ebx register into the esi register
 
 increment_inner_loop:
-	inc ebx
+	inc ebx                                 
 	jmp inner_loop
 
 swap_grades:
