@@ -153,18 +153,18 @@ next_index:
 	jmp start_swap                          ;Jump to start_swap unconditionally
 
 first_instance:
-	mov [num1], ecx                         
-	mov [num2], ebx
-	jmp first_swap
+	mov [num1], ecx                         ;Move value in ecx into [num1] (memory location)
+	mov [num2], ebx                         ;Move value in ebx into [num2] (memory location)
+	jmp first_swap                          ;Jump to first_swap unconditionally
 
 minor_interlude:
-	cmp num1, 0
-	jne finish_first_swap
-	dec ecx
-	jmp finish_first_swap
+	cmp num1, 0                             ;Compare value in num1 to value 0
+	jne finish_first_swap                   ;If not equal, jump to finish_first_swap      
+	dec ecx                                 ;Decrement value in ecx register by 1
+	jmp finish_first_swap                   ;Jump to finish_first_swap unconditionally
 
 first_swap:
-	cmp ebx, nameswap2
+	cmp ebx, nameswap2                      
 	je minor_interlude
 	mov al, [names + ecx]
 	mov [studentName], al
