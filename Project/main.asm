@@ -192,32 +192,32 @@ second_instance:
 	jmp iterate                             ;Jump to iterate unconditionally
 
 iterate:
-	mov al, [names + ecx]                    ;Move memory from [names + ecx] (calculated memory address) into al
-	mov [studentName], al
-	inc ecx
-	cmp studentName, ','                     ;Compare value in data studentName and ','(used as an index for names Array)
-	je next_index
-	jmp iterate
+	mov al, [names + ecx]                   ;Move memory from [names + ecx] (calculated memory address) into al
+	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
+	inc ecx                                 ;Increment value in ecx register by 1
+	cmp studentName, ','                    ;Compare value in data studentName and ','(used as an index for names Array)
+	je next_index                           ;If equal, jump to next_index
+	jmp iterate                             ;Jump to iterate unconditionally
 
 prepare_final:
-	mov ecx, [num1]
-	mov ebx, [num2]
-	jmp second_swap
+	mov ecx, [num1]                         ;Move data from [num1] (memory location) to ecx register
+	mov ebx, [num2]                         ;Move data from [num2] (memory location) to ebx register
+	jmp second_swap                         ;Jump to second_swap unconditionally
 
 second_swap:
-	mov al, [names + ecx]                     ;Move memory from [names + ecx] (calculated memory address) into al
-	mov [swappedNames + esi], al
-	mov [studentName], al
-	inc ecx
-	inc esi
-	cmp studentName, ','
-	je final
-	jmp second_swap
+	mov al, [names + ecx]                   ;Move memory from [names + ecx] (calculated memory address) into al
+	mov [swappedNames + esi], al            ;Move data from al into [swappedNames + esi] (calculated memory address)
+	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
+	inc ecx                                 ;Increment value in ecx register by 1
+	inc esi                                 ;Increment value in esi register by 1
+	cmp studentName, ','                    ;Compare value in data studentName and ','(used as an index for names Array)
+	je final                                ;If equal, jump to final
+	jmp second_swap                         ;Jump to second_swap unconditionally
 
 final:
-	mov ecx, [num3]
-	mov ebx, edi
-	jmp next_index
+	mov ecx, [num3]                         ;Move data from [num3] (memory location) to ecx register
+	mov ebx, edi                            ;Move data from edi register to ebx register
+	jmp next_index                          ;Jump to next_index unconditionally
 
 complete_transfer:
 	xor ecx, ecx
