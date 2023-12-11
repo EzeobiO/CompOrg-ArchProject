@@ -359,34 +359,34 @@ count_grades:
 	jge next_grade_C                        ;If greater than or equal, jump to next_grade_C
 	cmp [myData + ecx], 60                  ;Compare data from [myData + ecx] (calculated memory address) to value 60
 	jge next_grade_D                        ;If greater than or equal, jump to next_grade_D
-	cmp [myData + ecx], 60                  ;Compare data from [myData + ecx] (calculated memory address) to value 90
+	cmp [myData + ecx], 60                  ;Compare data from [myData + ecx] (calculated memory address) to value 60
 	jl next_grade_F                         ;If less than, jump to next_grade_F 
 
 next_grade_A:
-	add gradeArray[0], 1
-	inc ecx
-	jmp count_grades
+	add gradeArray[0], 1                    ;Add value 1 to index 0 of array gradeArray
+	inc ecx                                 ;Increment value in ecx register by 1
+	jmp count_grades                        ;Jump to count_grades unconditionally
 
 next_grade_B:
-	add gradeArray[1], 1
-	mov al, gradeArray[1]
-	inc ecx
-	jmp count_grades
+	add gradeArray[1], 1                    ;Add value 1 to index 1 of array gradeArray
+	mov al, gradeArray[1]                   ;Move data from gradeArray[1] into al
+	inc ecx                                 ;Increment value in ecx register by 1
+	jmp count_grades                        ;Jump to count_grades unconditionally
 
 next_grade_C:
-	add gradeArray[2], 1
-	inc ecx
-	jmp count_grades
+	add gradeArray[2], 1                    ;Add value 1 to index 2 of array gradeArray
+	inc ecx                                 ;Increment value in ecx register by 1
+	jmp count_grades                        ;Jump to count_grades unconditionally
 
-next_grade_D:
-	add gradeArray[3], 1
-	inc ecx
-	jmp count_grades
+next_grade_D: 
+	add gradeArray[3], 1                    ;Add value 1 to index 3 of array gradeArray
+	inc ecx                                 ;Increment value in ecx register by 1
+	jmp count_grades                        ;Jump to count_grades unconditionally
 
 next_grade_F:
-	add gradeArray[4], 1
-	inc ecx
-	jmp count_grades
+	add gradeArray[4], 1                    ;Add value 1 to index 4 of array gradeArray
+	inc ecx                                 ;Increment value in ecx register by 1
+	jmp count_grades                        ;Jump to count_grades unconditionally
 
 print_letter_gradeArray:
 	cmp ebx, 5
