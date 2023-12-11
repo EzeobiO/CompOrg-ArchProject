@@ -389,17 +389,17 @@ next_grade_F:
 	jmp count_grades                        ;Jump to count_grades unconditionally
 
 print_letter_gradeArray:
-	cmp ebx, 5
-	je ending_all
-	mov al, [gradeLetters + esi]
-	mov [studentName], al
-	cmp studentName, ','
-	je print_integer_gradeArray
-	mov edx, offset studentName
-	call writestring
-	inc esi
-	inc ecx
-	jmp print_letter_gradeArray
+	cmp ebx, 5                              ;Compare value in ebx register to value 5
+	je ending_all                           ;If equal, jump to ending_all
+	mov al, [gradeLetters + esi]            ;Move [gradeLetters + esi] (calculated memory location) into al 
+	mov [studentName], al                   ;Move data from al to [StudentName] (memory location) 
+	cmp studentName, ','                    ;Compare value in data studentName and ','(used as an index for names Array)
+	je print_integer_gradeArray             ;If equal, jump to print_integer_gradeArray 
+	mov edx, offset studentName             ;Load offset of data studentName into the edx register
+	call writestring                        ;Print message from edx (studentName)
+	inc esi                                 ;Increment value in esi register by 1
+	inc ecx                                 ;Increment value in ecx register by 1
+	jmp print_letter_gradeArray             ;Jump to print_letter_gradeArray unconditionally
 
 print_integer_gradeArray:
 	mov [studentName], ' '
