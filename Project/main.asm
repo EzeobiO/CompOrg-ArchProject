@@ -74,7 +74,7 @@ print_original_grade:
 	call writestring                        ;Print
 	inc esi                                 ;Increment value in esi register by 1
 	inc ecx                                 ;Increment value in ecx register by 1
-	xor eax, eax                            ;Perform exclusive or with eax register 
+	xor eax, eax                            ;Perform exclusive or with eax register which zeros out
 	mov al, [myData + ebx]                  ;Load an element from the myData array into al
 	call writedec                           ;Print
 	call crlf                               ;Go to next line
@@ -185,11 +185,11 @@ finish_first_swap:
 	jmp finish_first_swap                   ;Jump to finish_first_swap unconditionally
 
 second_instance:
-	mov [num3], ecx
-	mov edi, ebx
-	mov ecx, [num1]
-	mov ebx, [num2]
-	jmp iterate
+	mov [num3], ecx                         ;Move data from register ecx to [num3] (memory location)
+	mov edi, ebx                            ;Move data from ebx register to edi register
+	mov ecx, [num1]                         ;Move data from [num1] (memory location) to ecx register
+	mov ebx, [num2]                         ;Move data from [num2] (memory location) to ebx register
+	jmp iterate                             ;Jump to iterate unconditionally
 
 iterate:
 	mov al, [names + ecx]                    ;Move memory from [names + ecx] (calculated memory address) into al
