@@ -164,15 +164,15 @@ minor_interlude:
 	jmp finish_first_swap                   ;Jump to finish_first_swap unconditionally
 
 first_swap:
-	cmp ebx, nameswap2                      
-	je minor_interlude
-	mov al, [names + ecx]
-	mov [studentName], al
-	inc ecx
-	cmp studentName, ','
-	jne first_swap
-	inc ebx
-	jmp first_swap
+	cmp ebx, nameswap2                      ;Compare value in ebx register to value in nameswap2
+	je minor_interlude                      ;If equal, jump to minor_interlude
+	mov al, [names + ecx]                   ;Move memory from [names + ecx] (calculated memory address) into al
+	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
+	inc ecx                                 ;Increment value in ecx register by 1
+	cmp studentName, ','                    ;Compare value in data studentName and ','(used as an index for names Array)
+	jne first_swap                          ;If not equal, jump to first_swap
+	inc ebx                                 ;Increment value in ebx register by 1
+	jmp first_swap                          ;Jump to first_swap unconditionally
 
 finish_first_swap:
 	mov al, [names + ecx]
