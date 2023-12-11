@@ -353,11 +353,11 @@ count_grades:
 	je print_letter_gradeArray              ;If equal, jump to print_letter_gradeArray        
 	cmp [myData + ecx], 90                  ;Compare data from [myData + ecx] (calculated memory address) to value 90
 	jge next_grade_A                        ;If greater than or equal, jump to next_grade_A    
-	cmp [myData + ecx], 80                  ;Compare data from [myData + ecx] (calculated memory address) to value 90
+	cmp [myData + ecx], 80                  ;Compare data from [myData + ecx] (calculated memory address) to value 80
 	jge next_grade_B                        ;If greater than or equal, jump to next_grade_B 
-	cmp [myData + ecx], 70                  ;Compare data from [myData + ecx] (calculated memory address) to value 90
+	cmp [myData + ecx], 70                  ;Compare data from [myData + ecx] (calculated memory address) to value 70
 	jge next_grade_C                        ;If greater than or equal, jump to next_grade_C
-	cmp [myData + ecx], 60                  ;Compare data from [myData + ecx] (calculated memory address) to value 90
+	cmp [myData + ecx], 60                  ;Compare data from [myData + ecx] (calculated memory address) to value 60
 	jge next_grade_D                        ;If greater than or equal, jump to next_grade_D
 	cmp [myData + ecx], 60                  ;Compare data from [myData + ecx] (calculated memory address) to value 90
 	jl next_grade_F                         ;If less than, jump to next_grade_F 
