@@ -260,17 +260,17 @@ prepare_printer:
 	jmp print_studentTable                  ;Jump to print_studentTable unconditionally
 
 print_studentTable:
-	cmp ebx, 10
-	je increment_outer_loop
-	mov al, [names + esi]
-	mov [studentName], al
-	cmp studentName, ','
-	je check_for_index
-	mov edx, offset studentName
-	call writestring
-	inc esi
-	inc ecx
-	jmp print_studentTable
+	cmp ebx, 10                             ;Compare value in register ebx to value 10
+	je increment_outer_loop                 ;If equal, jump to increment_outer_loop  
+	mov al, [names + esi]                   ;Move data from [names + esi] (calculated memory address) into al
+	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
+	cmp studentName, ','                    ;Compare value in data studentName and ','(used as an index for names Array)
+	je check_for_index                      ;If equal, jump to check_for_index
+	mov edx, offset studentName             ;Load offset of data studentName into the edx register
+	call writestring                        ;Print message in edx (studentName)
+	inc esi                                 ;Increment value in esi register by 1
+	inc ecx                                 ;Increment value in ecx register by 1
+	jmp print_studentTable                  ;Jump to print_studentTable unconditionally
 
 check_for_index:
 	cmp ecx, 0
