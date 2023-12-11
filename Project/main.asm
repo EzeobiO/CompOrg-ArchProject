@@ -147,13 +147,13 @@ start_swap:
 	jmp start_swap                          ;Jump to start_swap unconditionally
 
 next_index:
-	cmp ecx, 1
-	jle start_swap
-	inc ebx
-	jmp start_swap
+	cmp ecx, 1                              ;Compare value in register ecx to value 1
+	jle start_swap                          ;If less than or equal, jump to start_swap
+	inc ebx                                 ;Increment value in ebx register by 1
+	jmp start_swap                          ;Jump to start_swap unconditionally
 
 first_instance:
-	mov [num1], ecx
+	mov [num1], ecx                         
 	mov [num2], ebx
 	jmp first_swap
 
