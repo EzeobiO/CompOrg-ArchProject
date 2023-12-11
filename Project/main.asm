@@ -69,7 +69,7 @@ check_for_index_original:
 	jmp print_originalTable                 ;Jump to print_originalTable unconditionally
 
 print_original_grade:
-	mov [studentName], ' '                  ;Store data ' ' into studentName (memory location)
+	mov [studentName], ' '                  ;Print a space between studentName and grade
 	mov edx, offset studentName             ;Load offset of data studentName (studentName is of type Byte) into the edx register
 	call writestring                        ;Print
 	inc esi                                 ;Increment value in esi register by 1
@@ -280,7 +280,7 @@ check_for_index:
 	jmp print_studentTable                  ;Jump to print_studentTable unconditionally
 
 print_grade:
-	mov [studentName], ' '                  ;Store data ' ' into studentName (memory location)
+	mov [studentName], ' '                  ;Print a space between studentName and grade
 	mov edx, offset studentName             ;Load offset of data studentName into the edx register
 	call writestring                        ;Print message from edx (studentName)
 	inc esi                                 ;Increment value in esi register by 1
@@ -316,25 +316,25 @@ print_finalTable:
 	inc ecx                                 ;Increment value in ecx register by 1
 	jmp print_finalTable                    ;Jump to print_finalTable unconditionally
 
-check_for_index_final:
-	cmp ecx, 0
-	jne print_final_grade
-	inc ecx
-	inc esi
-	jmp print_finalTable
+check_for_index_final:                      
+	cmp ecx, 0                              ;Compare value from register ecx to value 0
+	jne print_final_grade                   ;If not equal, jump to print_final_grade 
+	inc ecx                                 ;Increment value in ecx register by 1
+	inc esi                                 ;Increment value in esi register by 1
+	jmp print_finalTable                    ;Jump to print_finalTable unconditionally
 
 print_final_grade:
-	mov [studentName], ' '
-	mov edx, offset studentName
-	call writestring
-	inc esi
-	inc ecx
-	xor eax, eax
-	mov al, [myData + ebx]
-	call writedec
-	call crlf
-	inc ebx
-	jmp print_finalTable
+	mov [studentName], ' '                  ;Print a space between studentName and grade
+	mov edx, offset studentName             ;Load offset of data studentName into the edx register
+	call writestring                        ;Print message from edx (studentName)
+	inc esi                                 ;Increment value in esi register by 1
+	inc ecx                                 ;Increment value in ecx register by 1
+	xor eax, eax                            ;Zero out eax
+	mov al, [myData + ebx]                  ;Move data from [myData + ebx] (calculated memory address) into al
+	call writedec                           ;Prints value from al
+	call crlf                               ;New line
+	inc ebx                                 ;Increment value in ebx register by 1
+	jmp print_finalTable                    ;Jump to print_finalTable unconditionally
 
 print_distribution:
 	call crlf
