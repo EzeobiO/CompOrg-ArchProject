@@ -117,8 +117,8 @@ increment_inner_loop:
 swap_grades:
 	cmp ecx, esi                            ;Compare value in ecx with value in esi
 	je increment_outer_loop_no_sort         ;If equal, jump to increment_outer_loop_no_sort
-	mov al, [myData + esi]                  ;Move memory from [myData + esi] (calculated memory address) into al
-	mov dl, [myData + ecx]                  ;Move memory from [myData + ecx] (calculated memory address) into dl
+	mov al, [myData + esi]                  ;Move data from [myData + esi] (calculated memory address) into al
+	mov dl, [myData + ecx]                  ;Move data from [myData + ecx] (calculated memory address) into dl
 	mov [myData + ecx], al                  ;Move data from al into [myData + ecx] (calculated memory address)
 	mov [myData + esi], dl                  ;Move data from dl into [myData + esi] (calculated memory address)
 	mov [nameswap1], ecx                    ;Move data from ecx to [nameswap1] (memory location)
@@ -137,7 +137,7 @@ start_swap:
 	je first_instance                       ;If equal, jump to first_instance
 	cmp ebx, nameswap2                      ;Compare value in ebx register to value in nameswap2
 	je prepare_final                        ;If equal, jump to prepare_final 
-	mov al, [names + ecx]                   ;Move memory from [names + ecx] (calculated memory address) into al
+	mov al, [names + ecx]                   ;Move data from [names + ecx] (calculated memory address) into al
 	mov [swappedNames + esi], al            ;Move data from al into [swappedNames + esi] (calculated memory address)
 	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
 	inc ecx                                 ;Increment value in ecx register by 1
@@ -166,7 +166,7 @@ minor_interlude:
 first_swap:
 	cmp ebx, nameswap2                      ;Compare value in ebx register to value in nameswap2
 	je minor_interlude                      ;If equal, jump to minor_interlude
-	mov al, [names + ecx]                   ;Move memory from [names + ecx] (calculated memory address) into al
+	mov al, [names + ecx]                   ;Move data from [names + ecx] (calculated memory address) into al
 	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
 	inc ecx                                 ;Increment value in ecx register by 1
 	cmp studentName, ','                    ;Compare value in data studentName and ','(used as an index for names Array)
@@ -175,7 +175,7 @@ first_swap:
 	jmp first_swap                          ;Jump to first_swap unconditionally
 
 finish_first_swap:
-	mov al, [names + ecx]                   ;Move memory from [names + ecx] (calculated memory address) into al
+	mov al, [names + ecx]                   ;Move data from [names + ecx] (calculated memory address) into al
 	mov [swappedNames + esi], al            ;Move data from al into [swappedNames + esi] (calculated memory address)
 	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
 	inc ecx                                 ;Increment value in ecx register by 1
@@ -192,7 +192,7 @@ second_instance:
 	jmp iterate                             ;Jump to iterate unconditionally
 
 iterate:
-	mov al, [names + ecx]                   ;Move memory from [names + ecx] (calculated memory address) into al
+	mov al, [names + ecx]                   ;Move data from [names + ecx] (calculated memory address) into al
 	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
 	inc ecx                                 ;Increment value in ecx register by 1
 	cmp studentName, ','                    ;Compare value in data studentName and ','(used as an index for names Array)
@@ -205,7 +205,7 @@ prepare_final:
 	jmp second_swap                         ;Jump to second_swap unconditionally
 
 second_swap:
-	mov al, [names + ecx]                   ;Move memory from [names + ecx] (calculated memory address) into al
+	mov al, [names + ecx]                   ;Move data from [names + ecx] (calculated memory address) into al
 	mov [swappedNames + esi], al            ;Move data from al into [swappedNames + esi] (calculated memory address)
 	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
 	inc ecx                                 ;Increment value in ecx register by 1
@@ -220,20 +220,20 @@ final:
 	jmp next_index                          ;Jump to next_index unconditionally
 
 complete_transfer:
-	xor ecx, ecx
-	xor ebx, ebx
+	xor ecx, ecx                            ;Zero out ecx
+	xor ebx, ebx                            ;Zero out ebx
 
 little_loop:
-	cmp ebx, mylength
-	jg prepare_printer
-	mov al, [swappedNames + ecx]
-	mov [names + ecx], al
-	mov [studentName], al
-	inc ecx
-	cmp studentName, ','
-	jne little_loop
-	inc ebx
-	jmp little_loop
+	cmp ebx, mylength                       ;Compare value in ebx register to mylength (10)
+	jg prepare_printer                      ;If greater than, jump to prepare_printer
+	mov al, [swappedNames + ecx]            ;Move data from [swappedNames + ecx] (calculated memory address) into al
+	mov [names + ecx], al                   ;Move data from al into [names + ecx] (calculated memory address)
+	mov [studentName], al                   ;Move data from al to [StudentName] (memory location)
+	inc ecx                                 ;Increment value in ecx register by 1
+	cmp studentName, ','                    ;Compare value in data studentName and ','(used as an index for names Array)
+	jne little_loop                         ;If not equal, jump to little_loop
+	inc ebx                                 ;Increment value in ebx register by 1
+	jmp little_loop                         ;Jump to little_loop unconditionally
 
 increment_outer_loop:
 	call crlf
