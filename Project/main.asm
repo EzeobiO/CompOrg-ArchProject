@@ -111,8 +111,8 @@ inner_loop:
 	mov esi, ebx                            ;Load data from ebx register into the esi register
 
 increment_inner_loop:
-	inc ebx                                 
-	jmp inner_loop
+	inc ebx                                 ;Increment value in ebx register by 1
+	jmp inner_loop                          ;Jump to inner_loop unconditionally
 
 swap_grades:
 	cmp ecx, esi
