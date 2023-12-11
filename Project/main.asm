@@ -236,19 +236,19 @@ little_loop:
 	jmp little_loop                         ;Jump to little_loop unconditionally
 
 increment_outer_loop:
-	call crlf
-	mov ecx, tempstorage
-	xor ebx, ebx
-	xor esi, esi
-	inc ecx
-	jmp outer_loop
+	call crlf                               ;New line
+	mov ecx, tempstorage                    ;Move data from ttempstorage) to ecx register
+	xor ebx, ebx                            ;Zero out ebx
+	xor esi, esi                            ;Zero out esi
+	inc ecx                                 ;Increment value in ecx register by 1
+	jmp outer_loop                          ;Jump to outer_loop unconditionally
 
 increment_outer_loop_no_sort:
-	call crlf
-	xor ebx, ebx
-	xor esi, esi
-	inc ecx
-	jmp outer_loop
+	call crlf                               ;New line
+	xor ebx, ebx                            ;Zero out ebx
+	xor esi, esi                            ;Zero out esi
+	inc ecx                                 ;Increment value in ecx register by 1
+	jmp outer_loop                          ;Jump to outer_loop unconditionally
 
 	;Student Table Printout
 prepare_printer:
