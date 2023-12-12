@@ -42,31 +42,31 @@ main PROC
 	xor edi, edi
 
 ;Print the team name
-print_TeamName:								;Printing out team name
-	mov edx, offset teamName				;Load data teamName into the edx register
-	call writestring						;Print
-	call crlf								;Go to next line
-	call crlf								;Go to next line
+print_TeamName:					;Printing out team name
+	mov edx, offset teamName		;Load data teamName into the edx register
+	call writestring			;Print
+	call crlf				;Go to next line
+	call crlf				;Go to next line
 
 ;Print out "Original Table"
-print_initialTable:							;Printing out "Original Table"
-	mov edx, offset initialTable			;Load data initialTable into the edx register
-	call writestring						;Print
-	call crlf								;Go to next line
+print_initialTable:				;Printing out "Original Table"
+	mov edx, offset initialTable		;Load data initialTable into the edx register
+	call writestring			;Print
+	call crlf				;Go to next line
 
 ;Printing out Unsorted Table
 print_originalTable:						
-	cmp ebx, 10								;Compare value in ebx register to value 10
-	je selection_sort						;If equal, jump to selection_sort
-	mov al, [names + esi]					;Load an element from the names array into al
-	mov [studentName], al					;Store al into data studentName
-	cmp studentName, ','					;Compare value in data studentName and ','(used as an index for names Array)
-	je check_for_index_original				;If equal, jump to check_for_index_original	
-	mov edx, offset studentName				;Load offset of data studentName (studentName is of type Byte) into the edx register
-	call writestring						;Print
-	inc esi									;Increment value in esi register by 1
-	inc ecx									;Increment value in ecx register by 1
-	jmp print_originalTable					;Jump to print_originalTable unconditionally
+	cmp ebx, 10				;Compare value in ebx register to value 10
+	je selection_sort			;If equal, jump to selection_sort
+	mov al, [names + esi]			;Load an element from the names array into al
+	mov [studentName], al			;Store al into data studentName
+	cmp studentName, ','			;Compare value in data studentName and ','(used as an index for names Array)
+	je check_for_index_original		;If equal, jump to check_for_index_original	
+	mov edx, offset studentName		;Load offset of data studentName (studentName is of type Byte) into the edx register
+	call writestring			;Print
+	inc esi					;Increment value in esi register by 1
+	inc ecx					;Increment value in ecx register by 1
+	jmp print_originalTable			;Jump to print_originalTable unconditionally
 
 check_for_index_original:                   
 	cmp ecx, 0                              ;Compare value in ebx register to 0
