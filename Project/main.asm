@@ -26,8 +26,8 @@ DumpRegs PROTO
 	num3 dword 0
 	num4 dword 0
 
-.code
-main PROC
+.code										;Start of the main program
+main PROC									;Entry point of the main procedure
 ;Initializing registers
 	xor eax, eax
 	xor ebx, ebx
