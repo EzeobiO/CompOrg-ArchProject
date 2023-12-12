@@ -313,36 +313,36 @@ print_grade:
 
 ;Printing and assigning letter grades after grades
 assign_A:
-	mov edx, offset lettergrade1
-	call writestring
+	mov edx, offset lettergrade1            ;Load offset of data lettergrade1 into the edx register
+	call writestring                        ;Print message from edx (lettergrade1)
 	call crlf                               ;New line
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_studentTable					;Jump to print_studentTable unconditionally
 
 assign_B:
-	mov edx, offset lettergrade2
-	call writestring
+	mov edx, offset lettergrade2            ;Load offset of data lettergrade2 into the edx register
+	call writestring                        ;Print message from edx (lettergrade2)
 	call crlf                               ;New line
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_studentTable					;Jump to print_studentTable unconditionally
 
 assign_C:
-	mov edx, offset lettergrade3
-	call writestring
+	mov edx, offset lettergrade3            ;Load offset of data lettergrade3 into the edx register
+	call writestring                        ;Print message from edx (lettergrade3)
 	call crlf                               ;New line
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_studentTable					;Jump to print_studentTable unconditionally
 
 assign_D:
-	mov edx, offset lettergrade4
-	call writestring
+	mov edx, offset lettergrade4            ;Load offset of data lettergrade4 into the edx register
+	call writestring                        ;Print message from edx (lettergrade4)
 	call crlf                               ;New line
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_studentTable					;Jump to print_studentTable unconditionally
 
 assign_F:
-	mov edx, offset lettergrade5
-	call writestring
+	mov edx, offset lettergrade5            ;Load offset of data lettergrade5 into the edx register
+	call writestring                        ;Print message from edx (lettergrade5)
 	call crlf                               ;New line
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_studentTable					;Jump to print_studentTable unconditionally
