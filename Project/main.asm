@@ -521,7 +521,7 @@ ending_all:
 	call crlf                               ;New line
 
 final_form:
-	cmp ecx, 5                              ;Comapre value from register ecx to value 5
+	cmp ecx, 5                              ;Compare value from register ecx to value 5
 	je ending                               ;If equal, jump to ending
 	xor eax, eax                            ;Zero out eax
 	mov al, [gradeArray + ecx]              ;Move data from [gradeArray + ecx] (calculated memory address) into al
