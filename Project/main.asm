@@ -409,28 +409,28 @@ assign_A_1:
 
 assign_B_1:
 	mov edx, offset lettergrade2            ;Load offset of data lettergrade2 into the edx register
-	call writestring                        
+	call writestring                        ;Print message from edx (lettergrade2)
 	call crlf                               ;New line
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_finalTable					;Jump to print_studentTable unconditionally
 
 assign_C_1:
 	mov edx, offset lettergrade3            ;Load offset of data lettergrade3 into the edx register
-	call writestring
+	call writestring                        ;Print message from edx (lettergrade3)
 	call crlf                               ;New line
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_finalTable					;Jump to print_studentTable unconditionally
 
 assign_D_1:
 	mov edx, offset lettergrade4            ;Load offset of data lettergrade4 into the edx register
-	call writestring
+	call writestring                        ;Print message from edx (lettergrade4)
 	call crlf                               ;New line
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_finalTable					;Jump to print_studentTable unconditionally
 
 assign_F_1:
 	mov edx, offset lettergrade5            ;Load offset of data lettergrade5 into the edx register
-	call writestring
+	call writestring                        ;Print message from edx (lettergrade5)
 	call crlf                               ;New line
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_finalTable					;Jump to print_studentTable unconditionally
