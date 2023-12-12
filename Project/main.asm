@@ -386,7 +386,7 @@ print_final_grade:
 	cmp al, 70                              ;Compare value in al to value 70
 	jge assign_C_1                          ;If greater than or equal, jump to assign_C_1 
 	cmp al, 60                              ;Compare value in al to value 60
-	jge assign_D_1                          ;If greater than or equal, jump assign_D_1         
+	jge assign_D_1                          ;If greater than or equal, jump assign_D_1        
 	cmp al, 60                              ;Compare value in al to value 60
 	jl assign_F_1                           ;If less than, jump to assign_F_1   
 
