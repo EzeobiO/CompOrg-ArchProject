@@ -293,16 +293,16 @@ print_grade:
 	xor eax, eax                            ;Zero out eax
 	mov al, [myData + ebx]                  ;Move data from [myData + ebx] (calculated memory address) into al
 	call writedec                           ;Prints value from al
-	cmp al, 90
-	jge assign_A
-	cmp al, 80
-	jge assign_B
-	cmp al, 70
-	jge assign_C
-	cmp al, 60
-	jge assign_D
-	cmp al, 60
-	jl assign_F
+	cmp al, 90								;Compare value in al to value 90
+	jge assign_A							;If greater than or equal, jump to assign_A
+	cmp al, 80								;Compare value in al to value 80
+	jge assign_B							;If greater than or equal, jump to assign_B
+	cmp al, 70								;Compare value in al to value 70
+	jge assign_C							;If greater than or equal, jump to assign_C
+	cmp al, 60								;Compare value in al to value 60
+	jge assign_D							;If greater than or equal, jump to assign_D
+	cmp al, 60								;Compare value in al to value 60
+	jl assign_F								;If less than, jump to assign_F
 
 assign_A:
 	mov edx, offset lettergrade1
