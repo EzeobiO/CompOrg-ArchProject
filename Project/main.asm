@@ -41,12 +41,14 @@ main PROC
 	xor esi, esi
 	xor edi, edi
 
+;Print the team name
 print_TeamName:								;Printing out team name
 	mov edx, offset teamName				;Load data teamName into the edx register
 	call writestring						;Print
 	call crlf								;Go to next line
 	call crlf								;Go to next line
 
+;Print out "Original Table"
 print_initialTable:							;Printing out "Original Table"
 	mov edx, offset initialTable			;Load data initialTable into the edx register
 	call writestring						;Print
@@ -86,6 +88,7 @@ print_original_grade:
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_originalTable                 ;Jump to print_originalTable unconditionally
 
+;Printing out "Selection Sort Process" and preparing to sort
 selection_sort:
 	xor eax, eax                            ;Perform exclusive or with eax register which zeros out
 	xor ebx, ebx                            ;Perform exclusive or with ebx register which zeros out
@@ -98,7 +101,7 @@ selection_sort:
 	call writestring                        ;Print
 	call crlf                               ;Go to next line
 
-	;Selection Sort
+;Implementing Selection Sort
 outer_loop:
 	cmp ecx, mylength                       ;Compare value in ecx and mylength (equal to 10)
 	je print_Result                         ;If equal, jump to print_Result
@@ -119,6 +122,7 @@ increment_inner_loop:
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp inner_loop                          ;Jump to inner_loop unconditionally
 
+;Swapping identified grades
 swap_grades:
 	cmp ecx, esi                            ;Compare value in ecx with value in esi
 	je increment_outer_loop_no_sort         ;If equal, jump to increment_outer_loop_no_sort
@@ -135,6 +139,7 @@ swap_grades:
 	xor ecx, ecx                            ;Zero out ecx
 	xor esi, esi                            ;Zero out esi
 
+;Swapping names accordingly
 start_swap:
 	cmp ebx, 10                             ;Compare value in ebx register to value 10
 	je complete_transfer                    ;If equal, jump to complete_transfer
@@ -255,7 +260,7 @@ increment_outer_loop_no_sort:
 	inc ecx                                 ;Increment value in ecx register by 1
 	jmp outer_loop                          ;Jump to outer_loop unconditionally
 
-	;Student Table Printout
+;Printing out the table after each sort to show the process
 prepare_printer:
 	xor edx, edx                            ;Zero out edx
 	xor ecx, ecx                            ;Zero out ecx
@@ -264,6 +269,7 @@ prepare_printer:
 	xor esi, esi                            ;Zero out esi
 	jmp print_studentTable                  ;Jump to print_studentTable unconditionally
 
+;Printing names first
 print_studentTable:
 	cmp ebx, 10                             ;Compare value in register ebx to value 10
 	je increment_outer_loop                 ;If equal, jump to increment_outer_loop  
@@ -284,6 +290,7 @@ check_for_index:
 	inc esi                                 ;Increment value in esi register by 1
 	jmp print_studentTable                  ;Jump to print_studentTable unconditionally
 
+;Printing grades after names
 print_grade:
 	mov [studentName], ' '                  ;Print a space between studentName and grade
 	mov edx, offset studentName             ;Load offset of data studentName into the edx register
@@ -304,6 +311,7 @@ print_grade:
 	cmp al, 60
 	jl assign_F
 
+;Printing and assigning letter grades after grades
 assign_A:
 	mov edx, offset lettergrade1
 	call writestring
@@ -339,6 +347,7 @@ assign_F:
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_studentTable					;Jump to print_studentTable unconditionally
 
+;Printing the final result (Same process of printing during the sort)
 print_Result:
 	xor eax, eax                            ;Zero out eax    
 	xor ebx, ebx                            ;Zero out ebx
@@ -426,7 +435,7 @@ assign_F_1:
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_finalTable					;Jump to print_studentTable unconditionally
 
-
+;Counting number of a letter grades
 print_distribution:
 	call crlf                               ;New line
 	xor eax, eax                            ;Zero out eax
@@ -479,6 +488,7 @@ next_grade_F:
 	inc ecx                                 ;Increment value in ecx register by 1
 	jmp count_grades                        ;Jump to count_grades unconditionally
 
+;Printing number of each letter grade
 print_letter_gradeArray:
 	cmp ebx, 5                              ;Compare value in ebx register to value 5
 	je ending_all                           ;If equal, jump to ending_all
@@ -505,6 +515,7 @@ print_integer_gradeArray:
 	inc ebx                                 ;Increment value in ebx register by 1
 	jmp print_letter_gradeArray             ;Jump to print_letter_gradeArray unconditionally
 
+;Representing number of each letter grades based off requested format
 ending_all:
 	xor ecx, ecx                            ;Zero out ecx
 	call crlf                               ;New line
@@ -518,6 +529,7 @@ final_form:
 	inc ecx                                 ;Increment value in ecx register by 1
 	jmp final_form                          ;Jump to final_form unconditionally
 
+;Ending the program
 ending:
 	call crlf                               ;New line
 
